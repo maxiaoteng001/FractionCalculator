@@ -76,7 +76,7 @@ public class FractionCalculator {
             if (input.startsWith("-"))
                 input = input.substring(1);
             if((lo = input.indexOf('/'))==0){
-                return false;
+                return isNumber(input);
             }
             String firsts = input.substring(0,lo);
             String seconds = input.substring(lo+1);
@@ -104,11 +104,15 @@ public class FractionCalculator {
             s = s.substring(1);
         }
         lo = s.indexOf('/');
-        String firsts = s.substring(0,lo);
-        String seconds = s.substring(lo+1);
-        fraction.setDenominator(Integer.parseInt(seconds));
-        fraction.setNumerator(Integer.parseInt(firsts)*sign);
-        return fraction;
+        if(lo == 0){
+            return new Fraction(Integer.parseInt(s),1);
+        }else{
+            String firsts = s.substring(0,lo);
+            String seconds = s.substring(lo+1);
+            fraction.setDenominator(Integer.parseInt(seconds));
+            fraction.setNumerator(Integer.parseInt(firsts)*sign);
+            return fraction;
+        }
     }
 
     private static boolean isNumber(String string){
