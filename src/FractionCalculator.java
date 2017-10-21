@@ -105,7 +105,7 @@ public class FractionCalculator {
         }
         lo = s.indexOf('/');
         if(lo == 0){
-            return new Fraction(Integer.parseInt(s),1);
+            return new Fraction(Integer.parseInt(s)*sign,1);
         }else{
             String firsts = s.substring(0,lo);
             String seconds = s.substring(lo+1);
