@@ -58,6 +58,10 @@ public class Fraction {
     //"numerator/denominator", a String representation of the Fraction
     @Override
     public String toString() {
+        if(numerator == denominator)
+            return "1";
+        if(denominator == 1)
+            return Integer.toString(numerator);
         return numerator+ "/" + denominator;
     }
 
