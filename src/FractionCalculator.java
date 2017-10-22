@@ -75,7 +75,8 @@ public class FractionCalculator {
         if(input.startsWith("-") || (input.charAt(0) >= '0' && input.charAt(0) <= '9')) {
             if (input.startsWith("-"))
                 input = input.substring(1);
-            if((lo = input.indexOf('/'))==0){
+            if((lo = input.indexOf('/'))==0 || (lo = input.indexOf('/'))== -1){
+                lo = 0;
                 return isNumber(input);
             }
             String firsts = input.substring(0,lo);
@@ -104,7 +105,8 @@ public class FractionCalculator {
             s = s.substring(1);
         }
         lo = s.indexOf('/');
-        if(lo == 0){
+        if(lo == 0 || lo == -1){
+            lo = 0;
             return new Fraction(Integer.parseInt(s)*sign,1);
         }else{
             String firsts = s.substring(0,lo);
